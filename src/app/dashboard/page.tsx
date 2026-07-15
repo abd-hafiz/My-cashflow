@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
+import Notifications from '@/components/Notifications'
 
 // ── Types ────────────────────────────────────────────────
 interface Profile { full_name: string; currency: string }
@@ -36,6 +37,7 @@ const NAV = [
   { icon: '◎', label: 'Objectifs', path: '/dashboard/objectifs' },
   { icon: '⊞', label: 'Budget', path: '/dashboard/budget' },
   { icon: '📖', label: 'Éducation', path: '/dashboard/education' },
+  { icon: '👤', label: 'Profil', path: '/dashboard/profil' },
 ]
 
 // ════════════════════════════════════════════════════════
@@ -225,7 +227,8 @@ export default function DashboardPage() {
             </h1>
             <p style={{ fontSize: '13px', color: '#64748B', marginTop: '3px', textTransform: 'capitalize' }}>{month}</p>
           </div>
-          <div style={{ display: 'flex', gap: '10px' }}>
+          <div style={{ display:'flex', gap:'10px', alignItems:'center' }}>
+            <Notifications />
             <button className="btn-ghost" onClick={() => setShowAddExpense(true)}>+ Dépense</button>
             <button className="btn-teal" onClick={() => setShowAddRevenue(true)}>+ Revenu</button>
           </div>
